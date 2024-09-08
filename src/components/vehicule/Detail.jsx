@@ -1,199 +1,314 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ContextReload } from "../../context/context";
-import { vehicule } from "./Teste"; // Importez vos données de véhicules
+import { vehicule } from "./Teste";
 
 const Detail = () => {
-  const [reload] = useContext(ContextReload);
-  const { id } = useParams();
-  const [detail, setDetail] = useState(null);
+    const [reload] = useContext(ContextReload); // Utilisation du contexte pour le rechargement
+    const { id } = useParams(); // Récupération de l'ID depuis les paramètres de l'URL
+    const [detail, setDetail] = useState({}); // État pour stocker le détail du véhicule
 
-  const getDetailVehicule = () => {
-    const vehiculeDetail = vehicule.find((v) => v.id === id);
-    if (vehiculeDetail) {
-      setDetail(vehiculeDetail);
-    } else {
-      setDetail(null);
-    }
-  };
+    // Fonction pour obtenir les détails du véhicule via l'ID
+    const getDetailVehicule = () => {
+        const vehiculeDetail = vehicule.find(v => v.id === id); // Recherche du véhicule correspondant à l'ID
+        if (vehiculeDetail) {
+            setDetail(vehiculeDetail); // Mise à jour de l'état avec les détails du véhicule
+        }
+    };
 
-  useEffect(() => {
-    getDetailVehicule();
-  }, [reload, id]);
+    useEffect(() => {
+        getDetailVehicule(); // Appel de la fonction pour obtenir les détails à chaque changement de `reload` ou `id`
+    }, [reload, id]);
 
-  return (
-    <section id="vehicule-info">
-      <div className="container">
-        {detail ? (
-          <>
-            {/* Affichage de l'image */}
-            <img
-              src={`/images/image/${detail.image}`}
-              alt={`image-${detail.title || detail.make}`}
-            />
-            <div className="box">
-              <h2>{detail.title || detail.make}</h2>
-              <p>{detail.describe}</p>
-              <p><strong>Prix :</strong> {detail.prix}</p>
+    return (
+        <section id="vehicule-info">
+            <div className="container">
+                {detail ? (
+                    <>
+                       
+                        <div className="box">
+                            <h2>{detail.make || "Marque inconnue"}</h2>
+                            {/* Affichage des détails supplémentaires si disponibles */}
+                            {detail.engineModel && (
+                                <div className="specsDetails">
+                               
+                                    {/* Commence */}
 
-              {/* Affichage de toutes les spécifications */}
-              <div className="specs">
-                <h3>Spécifications Techniques</h3>
-                <ul className="detailAuto">
-                  <h2>Engine type</h2>
-                  {detail.engineModel && (
-                    <li><strong>Modèle du moteur :</strong> {detail.engineModel}</li>
-                  )}
-                  {detail.petrol && (
-                    <li><strong>Type de carburant :</strong> {detail.petrol}</li>
-                  )}
-                  {detail.maximumOutput && (
-                    <li><strong>Puissance maximale :</strong> {detail.maximumOutput}</li>
-                  )}
-                  {detail.maximumTorque && (
-                    <li><strong>Couple maximal :</strong> {detail.maximumTorque}</li>
-                  )}
-                  {detail.NumberofCylinder && (
-                    <li><strong>Nombre de cylindres :</strong> {detail.NumberofCylinder}</li>
-                  )}
-                  {detail.Displacement && (
-                    <li><strong>Cylindrée :</strong> {detail.Displacement} cc</li>
-                  )}
-                  {detail.Bore && (
-                    <li><strong>Alésage :</strong> {detail.Bore} mm</li>
-                  )}
-                  {detail.Stroke && (
-                    <li><strong>Course :</strong> {detail.Stroke} mm</li>
-                  )}
-                  {detail.CompressionRatio && (
-                    <li><strong>Rapport de compression :</strong> {detail.CompressionRatio}</li>
-                  )}
-                  {detail.LubricationMethod && (
-                    <li><strong>Méthode de lubrification :</strong> {detail.LubricationMethod}</li>
-                  )}
-                  {detail.LubricantCapacity && (
-                    <li><strong>Capacité de lubrifiant :</strong> {detail.LubricantCapacity}</li>
-                  )}
-                  {detail.StartingMethod && (
-                    <li><strong>Méthode de démarrage :</strong> {detail.StartingMethod}</li>
-                  )}
-                  {detail.SpeciChangeficFuelConsumption && (
-                    <li><strong>Consommation spécifique de carburant :</strong> {detail.SpeciChangeficFuelConsumption}</li>
-                  )}
-                  {detail.OilVolume && (
-                    <li><strong>Volume d'huile :</strong> {detail.OilVolume}</li>
-                  )}
-                  {detail.Coolingsystemfillingquantity && (
-                    <li><strong>Capacité du système de refroidissement :</strong> {detail.Coolingsystemfillingquantity}</li>
-                  )}
-                  {detail.Thermostat && (
-                    <li><strong>Thermostat :</strong> {detail.Thermostat}</li>
-                  )}
-                  <h2>Cluttch</h2>
-                  {detail.Clutch && (
-                    <li><strong>Embrayage :</strong> {detail.Clutch}</li>
-                  )}
-                  <h2>Transmission</h2>
-                  {detail.Transmission && (
-                    <li><strong>Transmission :</strong> {detail.Transmission}</li>
-                  )}
-                  <h2>Propeller Shaft</h2>
-                  {detail.PropellerShaft && (
-                    <li><strong>Arbre de transmission :</strong> {detail.PropellerShaft}</li>
-                  )}
-                  <h2>Chassis</h2>
-                  {detail.FrameType && (
-                    <li><strong>Type de châssis :</strong> {detail.FrameType}</li>
-                  )}
-                  {detail.FrontSuspension && (
-                    <li><strong>Suspension avant :</strong> {detail.FrontSuspension}</li>
-                  )}
-                  {detail.RearSuspension && (
-                    <li><strong>Suspension arrière :</strong> {detail.RearSuspension}</li>
-                  )}
-                  {detail.FuelTankCapacity && (
-                    <li><strong>Capacité du réservoir :</strong> {detail.FuelTankCapacity} litres</li>
-                  )}
-                  <h2>Brakes</h2>
-                  {detail.FrontBrake && (
-                    <li><strong>Frein avant :</strong> {detail.FrontBrake}</li>
-                  )}
-                  {detail.RearBrake && (
-                    <li><strong>Frein arrière :</strong> {detail.RearBrake}</li>
-                  )}
-                  <h2>Wheels & Tyres</h2>
-                  {detail.TyreRimSize && (
-                    <li><strong>Taille des pneus :</strong> {detail.TyreRimSize}</li>
-                  )}
-                  {detail.TyresType && (
-                    <li><strong>Type de pneus :</strong> {detail.TyresType}</li>
-                  )}
-                  {detail.TyresPressure && (
-                    <li><strong>Pression des pneus :</strong> {detail.TyresPressure} PSI</li>
-                  )}
+                                  <div className="image-container">
+                                      <img src={`/images/image/${detail.image}`} alt={`image-${detail.title || 'Vehicule'}`} />
+                                  </div>
+                                  <div class="specs-container">
+                                      <h1>Spécifications Techniques</h1>
+                                      
+                                      <div class="spec-group">
+                                          <h2>Engine Type</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Engine Model : </span>
+                                              <span class="spec-value" id="engineType">{detail.engineModel}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Petrol :</span>
+                                              <span class="spec-value">{detail.petrol}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Maximum Output :</span>
+                                              <span class="spec-value">{detail.maximumOutput}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Maximum Torque :</span>
+                                              <span class="spec-value">{detail.maximumTorque}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Number of Cylinder :</span>
+                                              <span class="spec-value">{detail.NumberofCylinder}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Displacement :</span>
+                                              <span class="spec-value">{detail.Displacement}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Bore :</span>
+                                              <span class="spec-value"> {detail.Bore} mm</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Stroke :</span>
+                                              <span class="spec-value">{detail.Stroke} mm</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Compression Ratio :</span>
+                                              <span class="spec-value">{detail.CompressionRatio}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Lubricant Capacity :</span>
+                                              <span class="spec-value">{detail.LubricationMethod}r</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Lubricant Capacity :</span>
+                                              <span class="spec-value">{detail.LubricantCapacity}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Specific Fuel Consumption :</span>
+                                              <span class="spec-value">{detail.SpeciChangeficFuelConsumption}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Oil Change Volume :</span>
+                                              <span class="spec-value">{detail.OilVolume}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Cooling system filling quantity(Long term filling) :</span>
+                                              <span class="spec-value">{detail.Coolingsystemfillingquantity}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.Thermostat}</span>
+                                              <span class="spec-value"></span>
+                                          </div>
+                                      </div>
 
-                  <h2>Electronics</h2>
-                  {detail.OperatingVoltage && (
-                    <li><strong>Tension de fonctionnement :</strong> {detail.OperatingVoltage}</li>
-                  )}
-                  <h2>Instrument Panel</h2>
-                  {detail.Battery && (
-                    <li><strong>Batterie :</strong> {detail.Battery}</li>
-                  )}
-                  <h2>Seating Capacity</h2>
-                  {detail.Electronics && (
-                    <li><strong>Électronique :</strong> {detail.Electronics}</li>
-                  )}
-                  <h2>Wheel Base</h2>
-                  {detail.InstrumentPanel && (
-                    <li><strong>Tableau de bord :</strong> {detail.InstrumentPanel}</li>
-                  )}
-                  <h2>Wheel Track</h2>
-                  {detail.SeatingCapacity && (
-                    <li><strong>Capacité des sièges :</strong> {detail.SeatingCapacity}</li>
-                  )}
-                  <h2>Overall Length</h2>
-                  {detail.WheelBase && (
-                    <li><strong>Empattement :</strong> {detail.WheelBase}</li>
-                  )}
-                  <h2>Overall Width</h2>
-                  {detail.WheelTrack && (
-                    <li><strong>Voie :</strong> {detail.WheelTrack}</li>
-                  )}
-                  <h2>Overall Height</h2>
-                  {detail.OverallLength && (
-                    <li><strong>Longueur totale :</strong> {detail.OverallLength}</li>
-                  )}
-                  <h2>Weight Kgs</h2>
-                  {detail.OverallWidth && (
-                    <li><strong>Largeur totale :</strong> {detail.OverallWidth}</li>
-                  )}
-                  {detail.OverallHeight && (
-                    <li><strong>Hauteur totale :</strong> {detail.OverallHeight}</li>
-                  )}
-                  {detail.WeightKgs && (
-                    <li><strong>Poids :</strong> {detail.WeightKgs}</li>
-                  )}
-                  <h2>Performance</h2>
-                  {detail.Maximumdrivingspeed && (
-                    <li><strong>Vitesse maximale :</strong> {detail.Maximumdrivingspeed}</li>
-                  )}
-                  {detail.Gradeability && (
-                    <li><strong>Pente maximale :</strong> {detail.Gradeability}</li>
-                  )}
-                  {detail.TurningCircle && (
-                    <li><strong>Cercle de braquage :</strong> {detail.TurningCircle}</li>
-                  )}
-                </ul>
-              </div>
+
+                                      {/* Embrayage */}
+                                      
+                                      <div class="spec-group">
+                                          <h2>Clutch</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.Clutch}</span>
+                                              <span class="spec-value"></span>
+                                          </div>
+                                      </div>
+
+
+                                      {/* Transmission */}
+
+                                      <div class="spec-group">
+                                          <h2>Transmission</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.Transmission}</span>
+                                              <span class="spec-value"></span>
+                                          </div>
+                                      </div>
+                                      
+                                      <div class="spec-group">
+                                          <h2>Propeller Shaft</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.PropellerShaft}</span>
+                                              <span class="spec-value"></span>
+                                          </div>
+                                      </div>
+                                      
+
+                                      {/* Roues */}
+                                      <div class="spec-group">
+                                          <h2>Chassis</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Frame type :</span>
+                                              <span class="spec-value">{detail.FrameType}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Front Suspension :</span>
+                                              <span class="spec-value">{detail.FrontSuspension}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Rear Suspension :</span>
+                                              <span class="spec-value"> {detail.RearSuspension}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Fuel Tank Capacity:</span>
+                                              <span class="spec-value"> {detail.FuelTankCapacity}</span>
+                                          </div>
+                                      </div>
+                                      
+                                      {/* Frains */}
+                                      <div class="spec-group">
+                                          <h2>Brakes</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Front Brake :</span>
+                                              <span class="spec-value">{detail.FrontBrake}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Rear Brake :</span>
+                                              <span class="spec-value">{detail.RearBrake}</span>
+                                          </div>
+                                      </div>
+                                      
+
+                                      {/* Electronique */}
+                                      <div class="spec-group">
+                                          <h2>Électronique</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Operating Voltage :</span>
+                                              <span class="spec-value">{detail.OperatingVoltage}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Battery :</span>
+                                              <span class="spec-value">{detail.Battery}</span>
+                                          </div>
+                                          
+                                      </div>
+                                      
+                                      {/* Tailles pneu */}
+                                      <div class="spec-group">
+                                          <h2>Wheels & Tyres</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Tyre/Rim size :</span>
+                                              <span class="spec-value">{detail.TyreRimSize}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Tyres Type :</span>
+                                              <span class="spec-value">{detail.TyresType}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Tyres Pressure :</span>
+                                              <span class="spec-value">{detail.TyresPressure}</span>
+                                          </div>
+                                      </div>
+                                      
+
+                                      {/* Electronique */}
+                                      <div class="spec-group">
+                                          <h2>Electronics</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Operating Voltage :</span>
+                                              <span class="spec-value">{detail.OperatingVoltage}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label">Battery :</span>
+                                              <span class="spec-value">{detail.Battery}</span>
+                                          </div>
+
+                                          <div class="spec-item">
+                                              <span class="spec-value">{detail.Electronics}</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Tableau de bord */}
+
+                                      <div class="spec-group">
+                                          <h2>Instrument Panel</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.InstrumentPanel}</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Capacité des sièges */}
+                                      <div class="spec-group">
+                                          <h2>Seating Capacity</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.SeatingCapacity}</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Empattement */}
+                                      <div class="spec-group">
+                                          <h2>Wheel Base</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.WheelBase}</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Voie */}
+                                      <div class="spec-group">
+                                          <h2>Wheel Track</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label">{detail.WheelTrack}</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Longueur totale */}
+                                      <div class="spec-group">
+                                          <h2>Overall Length</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.OverallLength}</span>
+                                          </div>
+                                      </div>
+                                      
+
+                                      {/* Largeur totale */}
+                                      <div class="spec-group">
+                                          <h2>Overall Width</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.OverallWidth}</span>
+                                          </div>
+                                      </div>
+
+
+                                      {/* Hauteur totale */}
+                                      <div class="spec-group">
+                                          <h2>Overall Height</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.OverallHeight}</span>
+                                          </div>
+                                      </div>
+
+                                      {/* Poids */}
+                                      <div class="spec-group">
+                                          <h2>Weight Kgs</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.WeightKgs}</span>
+                                          </div>
+                                      </div>
+                                      {/* Hauteur totale */}
+                                      <div class="spec-group">
+                                          <h2>Performance</h2>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.Maximumdrivingspeed}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.Gradeability}</span>
+                                          </div>
+                                          <div class="spec-item">
+                                              <span class="spec-label"> {detail.TurningCircle}</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                                </div>
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    <p>Véhicule non trouvé</p>
+                )}
             </div>
-          </>
-        ) : (
-          <p>Véhicule non trouvé</p>
-        )}
-      </div>
-    </section>
-  );
+        </section>
+    );
 };
 
 export default Detail;

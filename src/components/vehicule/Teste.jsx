@@ -6,9 +6,6 @@ export const vehicule = [
     prix:"Rs ",
     petrol:"4-Stroke, Petrol/Gasoline ",
     image: "7_seater_back.png",
-
-    Make: "ZONSEN",
-    petrol: "4-Stroke, Petrol/Gasoline Engine",
     engineModel: "Euro Il Emission Standard Spark-Ignition, Single Cylinder, Liquid-Cotled",
     maximumOutput: "10.3 kW / 7500 rpm",
     MaximumTorque: "14.2 N-m / 6000 rpm",
