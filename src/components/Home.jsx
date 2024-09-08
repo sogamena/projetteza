@@ -40,37 +40,21 @@ const Home = () => {
                 </div>
                 <div>
                   <h2>150cc loader HI Cabin</h2>
-                  <p>00/00/0000</p>
-                  <p>
-                    Welcome to the HITA website, Huillerie Industrielle de
-                    Tamatave. We offer an exceptional range of oils, the result
-                    of ancestral know-how and rigorous production.
-                  </p>
                 </div>
               </div>
               <div className="cadre-new">
                 <div className="cadre-new-img">
                   <img className="photo-new" src="/images/image/deca_pm_front.png" alt="sary" />
                 </div>
-                <h2>DECA- 296770</h2>
-                <p>00/00/0000</p>
-                <p>
-                  Welcome to the HITA website, Huillerie Industrielle de
-                  Tamatave. We offer an exceptional range of oils, the result of
-                  ancestral know-how and rigorous production.
-                </p>
+                <h2>DECA</h2>
+                <h3>296770</h3>
               </div>
               <div className="cadre-new">
                 <div className="cadre-new-img">
                   <img className="photo-new" src="/images/image/rustamplus01.jpg" alt="sary" />
                 </div>
-                <h2>Rustam plus- 365000</h2>
-                <p>00/00/0000</p>
-                <p>
-                  Welcome to the HITA website, Huillerie Industrielle de
-                  Tamatave. We offer an exceptional range of oils, the result of
-                  ancestral know-how and rigorous production.
-                </p>
+                <h2>Rustam plus</h2>
+                <h3>Rs 365000</h3>
               </div>
             </div>
             <br />
