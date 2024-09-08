@@ -162,35 +162,30 @@ export const vehicule = [
     id: "3",
     title: "",
     describe: "lorem html",
-    prix :"2000000Ar",
     image: "150cchighcabin_2.png",
   },
   {
     id: "4",
     title: "Seater",
     describe: "lorem html",
-    prix :"2000000Ar",
     image: "7_seater_back.png",
   },
   {
     id: "5",
     title: "Cargo",
     describe: "lorem html",
-    prix :"2000000Ar",
     image: "cargo01.png",
   },
   {
     id: "6",
     title: "Deca",
     describe: "lorem html",
-    prix :"2000000Ar",
     image: "deca_pm_front.png",
   },
   {
     id: "7",
     title: "Pick Up",
     describe: "lorem html",
-    prix :"2000000Ar",
     image: "pickupfront01.png",
   }
 ];

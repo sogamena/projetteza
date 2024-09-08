@@ -47,7 +47,7 @@ const Home = () => {
                   <img className="photo-new" src="/images/image/deca_pm_front.png" alt="sary" />
                 </div>
                 <h2>DECA</h2>
-                <h3>296770</h3>
+                <h3>Rs 296770</h3>
               </div>
               <div className="cadre-new">
                 <div className="cadre-new-img">
