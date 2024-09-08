@@ -1,0 +1,152 @@
+.home-content {
+    background-image: url("../styles/images/LMC_202407.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 4px;
+    margin-bottom: 40px;
+  }
+  
+  .ico-search {
+    width: 28px !important;
+    margin-left: 10px;
+  }
+  @keyframes slideIn {
+    from {
+      left: -200px;
+      opacity: 0%;
+    }
+    to {
+      left: 0px;
+      opacity: 100%;
+    }
+  }
+  
+  .header {
+    width: auto;
+    height: 500px;
+    background-color: #2b87a05d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    animation: slideIn 1.5s ease-in-out forwards;
+  }
+  .header p {
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    width: 85%;
+  }
+  .header main h1{
+    color: #121212;
+    text-align: center;
+    background-color: rgb(255 255 255 / 76%);
+    padding: 10px;
+  }
+  .header main span{
+    color: #16b245;
+  }
+  .btn-header {
+    cursor: pointer;
+    border: none;
+    background-color: rgb(252 219 22 / 74%);
+    color: #121212;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+    width: 250px;
+    line-height: 1.5;
+    box-shadow: 0px 2px 5px 0px #3a3a3a;
+    font-family: Roboto;
+    transition: 0.3s;
+  }
+  .btn-header:hover {
+    background-color: #121212;
+    color: #16b245;
+  }
+  .latest-content , .direction{
+    padding-left:80px ;
+    padding-right: 80px;
+  }
+  .latest-content,.direction h2{
+    text-align: center;
+  }
+  .news-content{
+    /* display: flex;
+    width: 100%;
+    padding: 20px;
+    justify-content: space-between; */
+    grid-gap: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .cadre-new{
+    width: 300px;
+    height: 550px;
+    color: #101010;
+  }
+  .cadre-new p{
+    color: #101010;
+  }
+  .cadre-new-img{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 400px;
+  }
+  .photo-new{
+    width: 100%;
+    height: 100%;
+  }
+  .contenu-direction{
+    grid-gap: 10px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      height: auto;
+      flex-wrap: wrap;
+  }
+  .cadre-direction{
+    width: 220px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+  }
+  .img-direction{
+    width: 100%;
+    height: 300px;
+    background-color: #121212;
+  }
+  .img-direction img{
+    width: 100%;
+    height: 100%;
+  }
+  .info-direction{
+    width: 100%;
+    padding: 10px;
+    height: 100px; 
+    text-align: center;
+  }
+  @media screen and (max-width: 575px) {
+    .header p {
+      font-size: 15px;
+      padding: 10px;
+    }
+    .btn-header {
+      font-size: 16px;
+      padding: 10px;
+      width: 200px;
+    }
+  }
+  
