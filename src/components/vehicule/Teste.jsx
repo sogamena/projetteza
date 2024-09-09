@@ -156,12 +156,6 @@ export const vehicule = [
 
   },
   {
-    id: "3",
-    title: "",
-    describe: "lorem html",
-    image: "150cchighcabin_2.png",
-  },
-  {
     id: "4",
     title: "Seater",
     describe: "lorem html",

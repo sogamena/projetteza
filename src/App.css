@@ -93,6 +93,8 @@
     background-blend-mode: darken
   }
 
+
+
   .home-content .gauche{
     position: absolute;
     display: block;
@@ -122,6 +124,31 @@
     width: 28px !important;
     margin-left: 10px;
   }
+
+  
+  @media screen and (max-width: 650px) {
+    .home-content {
+      
+      height: 45vh;
+      margin-top: 6vw;
+    }
+
+    .home-content .gauche{
+      top: 12vw;
+    }
+  
+    .home-content .gauche .gc{
+      width: 40%;
+      margin-top: 3VW;
+    }
+    .home-content .gauche .gc img{
+      width: 8VW;
+    }
+    .home-content .droite{
+      top: 14vw;
+    }
+  }
+
   @keyframes slideIn {
     from {
       left: -200px;
@@ -192,10 +219,7 @@
     text-align: center;
   }
   .news-content{
-    /* display: flex;
-    width: 100%;
-    padding: 20px;
-    justify-content: space-between; */
+   
     grid-gap: 50px;
     text-align: center;
     display: flex;
@@ -204,7 +228,7 @@
     flex-wrap: wrap;
   }
   .cadre-new{
-    width: 300px;
+    width: 340px;
     height: 550px;
     color: #101010;
   }
@@ -382,6 +406,8 @@ footer {
     margin: 0 calc(20%/6) 2.5vw;
     transition: .2s;
 }
+
+
 #vehicule .dev-web .container .box-content:hover{
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0,0,0,0.15);
@@ -615,6 +641,33 @@ h1 {
   font-weight: bold;
   color: #009900;
   margin-top: 20px;
+}
+
+
+.specsDetails {
+  display: flex;
+  width: 80vw;
+  margin: 0 auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+@media screen and (max-width: 650px) {
+  .specsDetails {
+    display: block;
+    overflow: auto;
+  }
+
+  .specsDetails {
+    overflow: auto;
+  }
+
+  .specs-container {
+    flex: 1;
+    padding: 20px;
+    max-height: auto;
+  }
 }
 
 
